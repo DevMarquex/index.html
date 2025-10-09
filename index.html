@@ -25,42 +25,47 @@
 
         .age-gate-container {
             text-align: center;
-            padding: 40px;
+            padding: 80px 60px; /* ALTERADO: Aumentei o espaçamento interno */
             background-color: #1e1e1e;
-            border-radius: 15px;
+            border-radius: 20px; /* ALTERADO: Aumentei o arredondamento */
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             max-width: 90%;
-            width: 500px;
+            width: 800px; /* ALTERADO: Aumentei a largura da caixa */
+            /* Adicionado para centralizar conteúdo verticalmente */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 400px; /* ALTERADO: Defini uma altura mínima */
         }
 
         h1 {
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 3rem; /* ALTERADO: Aumentei o tamanho do título */
+            margin-bottom: 50px; /* ALTERADO: Aumentei a margem inferior */
             font-weight: 700;
         }
 
         .button-wrapper {
             display: flex;
-            gap: 20px; /* Espaço entre os botões */
+            gap: 30px; /* ALTERADO: Aumentei o espaço entre os botões */
             justify-content: center;
             flex-wrap: wrap; /* Para telas menores */
         }
 
         .btn {
             border: none;
-            padding: 18px 40px;
-            font-size: 1.2rem;
+            padding: 22px 60px; /* ALTERADO: Aumentei o tamanho dos botões */
+            font-size: 1.5rem; /* ALTERADO: Aumentei o texto dos botões */
             font-weight: 700;
             color: white;
-            border-radius: 10px;
+            border-radius: 12px; /* ALTERADO: Aumentei o arredondamento */
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            min-width: 150px;
+            min-width: 200px; /* ALTERADO: Aumentei a largura mínima */
         }
         
         .btn:hover {
-            transform: translateY(-3px); /* Efeito de elevação */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px); /* ALTERADO: Aumentei o efeito de elevação */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
 
         .btn-yes {
@@ -108,20 +113,15 @@
             // Certifique-se de que o código base do Pixel já está no <head> da página.
             // O código abaixo envia um evento padrão "Lead". Você pode usar outros eventos
             // padrão ou eventos personalizados.
-            // Exemplo de evento padrão:
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead'); 
             }
             
-            // Exemplo de evento personalizado (ex: 'AgeVerified'):
-            // if (typeof fbq === 'function') {
-            //     fbq('trackCustom', 'AgeVerified');
-            // }
-            // ------------------------------------------------
+            // --- FIM DO CÓDIGO DO PIXEL ---
             
             // Redireciona o usuário para a sua página principal
             // !!! IMPORTANTE: Troque "https://SEU-SITE.com" pelo link da sua página de destino.
-            window.location.href = "https://SEU-SITE.com"; 
+            window.location.href = "https://go.affiliapass.com?id=68d6b43ca01b1f00157f404b"; 
         });
 
         // Ação para o botão "NÃO"
@@ -131,11 +131,6 @@
             // Esconde a pergunta e mostra a mensagem de acesso negado
             ageGateContainer.style.display = 'none';
             rejectionMessage.style.display = 'block';
-
-            // Opcional: Redirecionar para outro site (ex: google.com) após alguns segundos
-            // setTimeout(function() {
-            //     window.location.href = "https://google.com";
-            // }, 3000); // 3000 milissegundos = 3 segundos
         });
     </script>
 
