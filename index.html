@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Idade</title>
+    
+    <style>
+        /* CSS para estilizar a página */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212; /* Fundo escuro moderno */
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .age-gate-container {
+            text-align: center;
+            padding: 40px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 500px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .button-wrapper {
+            display: flex;
+            gap: 20px; /* Espaço entre os botões */
+            justify-content: center;
+            flex-wrap: wrap; /* Para telas menores */
+        }
+
+        .btn {
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-width: 150px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px); /* Efeito de elevação */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-yes {
+            background-color: #28a745; /* Verde */
+        }
+
+        .btn-no {
+            background-color: #000000; /* Preto */
+            border: 2px solid #555; /* Borda sutil para destacar no fundo escuro */
+        }
+        
+        #rejection-message {
+            display: none; /* Mensagem de "acesso negado" fica oculta por padrão */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="age-gate-container" id="age-gate">
+        <h1>VOCÊ É MAIOR DE 18 ANOS?</h1>
+        <div class="button-wrapper">
+            <button class="btn btn-yes" id="yesButton">SIM</button>
+            <button class="btn btn-no" id="noButton">NÃO</button>
+        </div>
+    </div>
+    
+    <div class="age-gate-container" id="rejection-message">
+        <h1>Acesso restrito para menores de 18 anos.</h1>
+    </div>
+
+
+    <script>
+        // JavaScript para funcionalidade dos botões
+        const yesBtn = document.getElementById('yesButton');
+        const noBtn = document.getElementById('noButton');
+        const ageGateContainer = document.getElementById('age-gate');
+        const rejectionMessage = document.getElementById('rejection-message');
+
+        // Ação para o botão "SIM"
+        yesBtn.addEventListener('click', function() {
+            console.log('Usuário confirmou ser maior de 18 anos.');
+
+            // --- LOCAL PARA DISPARAR O PIXEL DA META ---
+            // Certifique-se de que o código base do Pixel já está no <head> da página.
+            // O código abaixo envia um evento padrão "Lead". Você pode usar outros eventos
+            // padrão ou eventos personalizados.
+            // Exemplo de evento padrão:
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead'); 
+            }
+            
+            // Exemplo de evento personalizado (ex: 'AgeVerified'):
+            // if (typeof fbq === 'function') {
+            //     fbq('trackCustom', 'AgeVerified');
+            // }
+            // ------------------------------------------------
+            
+            // Redireciona o usuário para a sua página principal
+            // !!! IMPORTANTE: Troque "https://SEU-SITE.com" pelo link da sua página de destino.
+            window.location.href = "https://SEU-SITE.com"; 
+        });
+
+        // Ação para o botão "NÃO"
+        noBtn.addEventListener('click', function() {
+            console.log('Usuário informou ser menor de 18 anos.');
+            
+            // Esconde a pergunta e mostra a mensagem de acesso negado
+            ageGateContainer.style.display = 'none';
+            rejectionMessage.style.display = 'block';
+
+            // Opcional: Redirecionar para outro site (ex: google.com) após alguns segundos
+            // setTimeout(function() {
+            //     window.location.href = "https://google.com";
+            // }, 3000); // 3000 milissegundos = 3 segundos
+        });
+    </script>
+
+</body>
+</html>
