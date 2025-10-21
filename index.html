@@ -40,45 +40,45 @@
 
         .age-gate-container {
             text-align: center;
-            padding: 80px 60px; 
+            padding: 80px 60px;
             background-color: #1e1e1e;
-            border-radius: 20px; 
+            border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             max-width: 90%;
-            width: 800px; 
+            width: 800px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 400px; 
+            min-height: 400px;
         }
 
         h1 {
-            font-size: 3rem; 
-            margin-bottom: 50px; 
+            font-size: 3rem;
+            margin-bottom: 50px;
             font-weight: 700;
         }
 
         .button-wrapper {
             display: flex;
-            gap: 30px; 
+            gap: 30px;
             justify-content: center;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
         }
 
         .btn {
             border: none;
-            padding: 22px 60px; 
-            font-size: 1.5rem; 
+            padding: 22px 60px;
+            font-size: 1.5rem;
             font-weight: 700;
             color: white;
-            border-radius: 12px; 
+            border-radius: 12px;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            min-width: 200px; 
+            min-width: 200px;
         }
         
         .btn:hover {
-            transform: translateY(-5px); 
+            transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
 
@@ -127,7 +127,7 @@
             // O código base no <head> já rastreia 'PageView'.
             // O código abaixo dispara um evento 'Lead' QUANDO o usuário clica em SIM.
             if (typeof fbq === 'function') {
-                fbq('track', 'Lead'); 
+                fbq('track', 'Lead');
             }
             
             // --- FIM DO CÓDIGO DO PIXEL ---
@@ -142,3 +142,9 @@
             
             // Esconde a pergunta e mostra a mensagem de acesso negado
             ageGateContainer.style.display = 'none';
+            rejectionMessage.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
