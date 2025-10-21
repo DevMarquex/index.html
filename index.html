@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Idade</title>
     
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '25035818109406217');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=25035818109406217&ev=PageView&noscript=1"
+    /></noscript>
     <style>
         /* CSS para estilizar a página */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
@@ -25,46 +40,45 @@
 
         .age-gate-container {
             text-align: center;
-            padding: 80px 60px; /* ALTERADO: Aumentei o espaçamento interno */
+            padding: 80px 60px; 
             background-color: #1e1e1e;
-            border-radius: 20px; /* ALTERADO: Aumentei o arredondamento */
+            border-radius: 20px; 
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             max-width: 90%;
-            width: 800px; /* ALTERADO: Aumentei a largura da caixa */
-            /* Adicionado para centralizar conteúdo verticalmente */
+            width: 800px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 400px; /* ALTERADO: Defini uma altura mínima */
+            min-height: 400px; 
         }
 
         h1 {
-            font-size: 3rem; /* ALTERADO: Aumentei o tamanho do título */
-            margin-bottom: 50px; /* ALTERADO: Aumentei a margem inferior */
+            font-size: 3rem; 
+            margin-bottom: 50px; 
             font-weight: 700;
         }
 
         .button-wrapper {
             display: flex;
-            gap: 30px; /* ALTERADO: Aumentei o espaço entre os botões */
+            gap: 30px; 
             justify-content: center;
-            flex-wrap: wrap; /* Para telas menores */
+            flex-wrap: wrap; 
         }
 
         .btn {
             border: none;
-            padding: 22px 60px; /* ALTERADO: Aumentei o tamanho dos botões */
-            font-size: 1.5rem; /* ALTERADO: Aumentei o texto dos botões */
+            padding: 22px 60px; 
+            font-size: 1.5rem; 
             font-weight: 700;
             color: white;
-            border-radius: 12px; /* ALTERADO: Aumentei o arredondamento */
+            border-radius: 12px; 
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            min-width: 200px; /* ALTERADO: Aumentei a largura mínima */
+            min-width: 200px; 
         }
         
         .btn:hover {
-            transform: translateY(-5px); /* ALTERADO: Aumentei o efeito de elevação */
+            transform: translateY(-5px); 
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
 
@@ -110,18 +124,16 @@
             console.log('Usuário confirmou ser maior de 18 anos.');
 
             // --- LOCAL PARA DISPARAR O PIXEL DA META ---
-            // Certifique-se de que o código base do Pixel já está no <head> da página.
-            // O código abaixo envia um evento padrão "Lead". Você pode usar outros eventos
-            // padrão ou eventos personalizados.
+            // O código base no <head> já rastreia 'PageView'.
+            // O código abaixo dispara um evento 'Lead' QUANDO o usuário clica em SIM.
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead'); 
             }
             
             // --- FIM DO CÓDIGO DO PIXEL ---
             
-            // Redireciona o usuário para a sua página principal
-            // !!! IMPORTANTE: Troque "https://SEU-SITE.com" pelo link da sua página de destino.
-            window.location.href = "https://go.affiliapass.com?id=68d6b43ca01b1f00157f404b"; 
+            // Redireciona o usuário para a sua página de destino
+            window.location.href = "https://verificacaoidade18.netlify.app/"; // <-- LINK ATUALIZADO AQUI
         });
 
         // Ação para o botão "NÃO"
