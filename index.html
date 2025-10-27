@@ -30,31 +30,19 @@
             width: 100%;
             height: 100%;
             display: flex;
-            
-            /* --- MUDANÇA --- */
-            /* Agora vamos empilhar os itens verticalmente */
             flex-direction: column; 
-            
             justify-content: center;
             align-items: center;
-            
-            /* --- MUDANÇA --- */
-            /* Fundo escuro original restaurado */
             background-color: #121212; 
-            
             font-family: 'Poppins', sans-serif;
             color: #ffffff;
-            overflow: auto; /* Permite rolar se o conteúdo for muito grande */
+            overflow: auto; 
         }
 
         .age-gate-container {
             text-align: center;
             padding: 80px 60px;
-            
-            /* --- MUDANÇA --- */
-            /* Cor opaca original restaurada */
             background-color: #1e1e1e; 
-            
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             max-width: 90%;
@@ -109,19 +97,19 @@
             display: none; /* Mensagem de "acesso negado" fica oculta por padrão */
         }
 
-        /* --- NOVO ESTILO PARA A CAIXA DO GIF/SVG --- */
+        /* --- ESTILO ATUALIZADO PARA A CAIXA DO GIF/SVG --- */
         .gif-box {
-            margin-top: 30px; /* Espaço entre a caixa de verificação e a caixa do GIF */
-            width: 800px; /* Tenta ter a mesma largura da caixa principal */
+            margin-top: 30px; 
+            width: 800px; 
             max-width: 90%;
             text-align: center;
         }
 
-        .gif-box img {
-            width: 100%; /* Faz a imagem SVG preencher a caixa */
-            max-height: 250px; /* Limita a altura para não ficar muito grande */
-            object-fit: contain; /* Garante que a imagem caiba bem, sem distorcer */
-            border-radius: 15px; /* Opcional: para suavizar as bordas */
+        /* --- MUDANÇA AQUI: de 'img' para 'object' --- */
+        .gif-box object { 
+            width: 100%; 
+            max-height: 250px; 
+            border-radius: 15px;
         }
         /* --- FIM DO NOVO ESTILO --- */
 
@@ -142,7 +130,7 @@
     </div>
 
     <div class="gif-box" id="gifBox">
-        <img src="fundo.svg" alt="Ilustração">
+        <object data="fundo.svg" type="image/svg+xml" aria-label="Ilustração"></object>
     </div>
     <script>
         // JavaScript para funcionalidade dos botões
@@ -150,9 +138,6 @@
         const noBtn = document.getElementById('noButton');
         const ageGateContainer = document.getElementById('age-gate');
         const rejectionMessage = document.getElementById('rejection-message');
-        
-        // --- NOVO ---
-        // Seleciona a nova caixa do GIF
         const gifBox = document.getElementById('gifBox');
 
         // Ação para o botão "SIM"
@@ -170,12 +155,8 @@
         noBtn.addEventListener('click', function() {
             console.log('Usuário informou ser menor de 18 anos.');
             
-            // Esconde a pergunta e mostra a mensagem de acesso negado
             ageGateContainer.style.display = 'none';
             rejectionMessage.style.display = 'block';
-
-            // --- NOVO ---
-            // Também esconde a caixa do GIF/SVG
             gifBox.style.display = 'none'; 
         });
     </script>
