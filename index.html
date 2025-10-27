@@ -30,48 +30,31 @@
             width: 100%;
             height: 100%;
             display: flex;
+            
+            /* --- MUDANÇA --- */
+            /* Agora vamos empilhar os itens verticalmente */
+            flex-direction: column; 
+            
             justify-content: center;
             align-items: center;
-            /* background-color: #121212; FOI REMOVIDO PARA USAR O SVG */
+            
+            /* --- MUDANÇA --- */
+            /* Fundo escuro original restaurado */
+            background-color: #121212; 
+            
             font-family: 'Poppins', sans-serif;
             color: #ffffff;
-            overflow: hidden;
-
-            /* --- INÍCIO DAS MUDANÇAS PARA O FUNDO SVG --- */
-            
-            /* !! IMPORTANTE !! 
-               Altere 'fundo.svg' para o nome exato do seu arquivo SVG.
-            */
-            background-image: url('fundo.svg'); 
-            
-            background-size: cover; 
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            
-            position: relative;
-            z-index: 1;
+            overflow: auto; /* Permite rolar se o conteúdo for muito grande */
         }
-        
-        /* Camada escura por cima do SVG para melhorar a leitura */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
-            z-index: -1; 
-        }
-        /* --- FIM DAS MUDANÇAS PARA O FUNDO SVG --- */
-
 
         .age-gate-container {
             text-align: center;
             padding: 80px 60px;
-            /* MUDANÇA: Adicionado transparência para ver o fundo */
-            background-color: rgba(30, 30, 30, 0.85); 
+            
+            /* --- MUDANÇA --- */
+            /* Cor opaca original restaurada */
+            background-color: #1e1e1e; 
+            
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             max-width: 90%;
@@ -80,7 +63,7 @@
             flex-direction: column;
             justify-content: center;
             min-height: 400px;
-            z-index: 2; /* Garante que a caixa fique acima da camada escura */
+            z-index: 2; 
         }
 
         h1 {
@@ -126,6 +109,22 @@
             display: none; /* Mensagem de "acesso negado" fica oculta por padrão */
         }
 
+        /* --- NOVO ESTILO PARA A CAIXA DO GIF/SVG --- */
+        .gif-box {
+            margin-top: 30px; /* Espaço entre a caixa de verificação e a caixa do GIF */
+            width: 800px; /* Tenta ter a mesma largura da caixa principal */
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .gif-box img {
+            width: 100%; /* Faz a imagem SVG preencher a caixa */
+            max-height: 250px; /* Limita a altura para não ficar muito grande */
+            object-fit: contain; /* Garante que a imagem caiba bem, sem distorcer */
+            border-radius: 15px; /* Opcional: para suavizar as bordas */
+        }
+        /* --- FIM DO NOVO ESTILO --- */
+
     </style>
 </head>
 <body>
@@ -142,26 +141,28 @@
         <h1>Acesso restrito para menores de 18 anos.</h1>
     </div>
 
-
+    <div class="gif-box" id="gifBox">
+        <img src="fundo.svg" alt="Ilustração">
+    </div>
     <script>
-        // JavaScript para funcionalidade dos botões (CÓDIGO LIMPO)
+        // JavaScript para funcionalidade dos botões
         const yesBtn = document.getElementById('yesButton');
         const noBtn = document.getElementById('noButton');
         const ageGateContainer = document.getElementById('age-gate');
         const rejectionMessage = document.getElementById('rejection-message');
+        
+        // --- NOVO ---
+        // Seleciona a nova caixa do GIF
+        const gifBox = document.getElementById('gifBox');
 
         // Ação para o botão "SIM"
         yesBtn.addEventListener('click', function() {
             console.log('Usuário confirmou ser maior de 18 anos.');
 
-            // --- LOCAL PARA DISPARAR O PIXEL DA META ---
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead');
             }
             
-            // --- FIM DO CÓDIGO DO PIXEL ---
-            
-            // Redireciona o usuário para a sua página de destino
             window.location.href = "https://www.gambling-affiliation.com/cpc/v=sfh7fvNy9ArEOQnvHXLK3MSAaxz4ikGhaRFZbMbhm08_GA7331V2&aff_var_1=";
         });
 
@@ -172,6 +173,10 @@
             // Esconde a pergunta e mostra a mensagem de acesso negado
             ageGateContainer.style.display = 'none';
             rejectionMessage.style.display = 'block';
+
+            // --- NOVO ---
+            // Também esconde a caixa do GIF/SVG
+            gifBox.style.display = 'none'; 
         });
     </script>
 
