@@ -22,7 +22,7 @@
     /></noscript>
     <style>
         /* CSS para estilizar a página */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family?family=Poppins:wght@400;700&display=swap');
 
         body, html {
             margin: 0;
@@ -32,16 +32,46 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #121212; /* Fundo escuro moderno */
+            /* background-color: #121212; FOI REMOVIDO PARA USAR O SVG */
             font-family: 'Poppins', sans-serif;
             color: #ffffff;
             overflow: hidden;
+
+            /* --- INÍCIO DAS MUDANÇAS PARA O FUNDO SVG --- */
+            
+            /* !! IMPORTANTE !! 
+               Altere 'fundo.svg' para o nome exato do seu arquivo SVG.
+            */
+            background-image: url('fundo.svg'); 
+            
+            background-size: cover; 
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            
+            position: relative;
+            z-index: 1;
         }
+        
+        /* Camada escura por cima do SVG para melhorar a leitura */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
+            z-index: -1; 
+        }
+        /* --- FIM DAS MUDANÇAS PARA O FUNDO SVG --- */
+
 
         .age-gate-container {
             text-align: center;
             padding: 80px 60px;
-            background-color: #1e1e1e;
+            /* MUDANÇA: Adicionado transparência para ver o fundo */
+            background-color: rgba(30, 30, 30, 0.85); 
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             max-width: 90%;
@@ -50,6 +80,7 @@
             flex-direction: column;
             justify-content: center;
             min-height: 400px;
+            z-index: 2; /* Garante que a caixa fique acima da camada escura */
         }
 
         h1 {
@@ -113,7 +144,7 @@
 
 
     <script>
-        // JavaScript para funcionalidade dos botões
+        // JavaScript para funcionalidade dos botões (CÓDIGO LIMPO)
         const yesBtn = document.getElementById('yesButton');
         const noBtn = document.getElementById('noButton');
         const ageGateContainer = document.getElementById('age-gate');
@@ -124,8 +155,6 @@
             console.log('Usuário confirmou ser maior de 18 anos.');
 
             // --- LOCAL PARA DISPARAR O PIXEL DA META ---
-            // O código base no <head> já rastreia 'PageView'.
-            // O código abaixo dispara um evento 'Lead' QUANDO o usuário clica em SIM.
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead');
             }
@@ -133,7 +162,7 @@
             // --- FIM DO CÓDIGO DO PIXEL ---
             
             // Redireciona o usuário para a sua página de destino
-            window.location.href = "https://www.gambling-affiliation.com/cpc/v=sfh7fvNy9ArEOQnvHXLK3MSAaxz4ikGhaRFZbMbhm08_GA7331V2&aff_var_1="; // <-- LINK ATUALIZADO AQUI
+            window.location.href = "https://www.gambling-affiliation.com/cpc/v=sfh7fvNy9ArEOQnvHXLK3MSAaxz4ikGhaRFZbMbhm08_GA7331V2&aff_var_1=";
         });
 
         // Ação para o botão "NÃO"
